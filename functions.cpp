@@ -5,11 +5,11 @@ namespace lab1{
     line* fillMatrix (int &matr) {
         line *lines = nullptr; // Ȕș
 //      int statusline = -2;
-        std::cout << "\n please get numbers of lines \n" << std::endl;
+        std::cout << "\nPlease get numbers of lines \n" << std::endl;
         int num = 0; //strings of matrix
 //        statusline = getNum (&num); // попросили количество строк
         if (/*statusline <= 0  && */getNum(num) < 0 ) {              //!!!!
-            std::cout << "\n You put an EOF or a WRONG DATA in the program, exit... \n" << std::endl;
+            std::cout << "\nYou put an EOF or a WRONG DATA in the program, exit... \n" << std::endl;
             return nullptr;
         } while (num < 0);
     //ниже выделяем память под строку
@@ -28,7 +28,7 @@ namespace lab1{
                 std::cout << "Enter number of items in line #" << (i + 1) << " --> ";
 //              int row = 0;
                 if (getNum(lines[i].n) < 0) {
-                    std::cout << "\n You put an EOF or a WRONG DATA in the program, exit... \n" << std::endl;
+                    std::cout << "\nYou put an EOF or a WRONG DATA in the program, exit... \n" << std::endl;
                     del(lines,i);
                     return nullptr;
                 }
@@ -49,7 +49,7 @@ namespace lab1{
 //              int statuselem = -2;
 //              statuselem = getNum(&elem);
                 if (getNum(lines[i].arr[j]) < 0){
-                    std::cout << "\n You put an EOF or a WRONG DATA in the program, exit... \n" << std::endl;
+                    std::cout << "\nYou put an EOF or a WRONG DATA in the program, exit... \n" << std::endl;
                     del (lines, i+1);
                     return nullptr;
                 }
@@ -73,7 +73,7 @@ namespace lab1{
     void printMat (line *a, int m) {
         for (int i = 0; i < m; ++i){
             for (int j = 0; j < a[i].n; ++j)
-                std::cout << a[i].a[j] << " ";
+                std::cout << a[i].arr[j] << " ";
             std::cout << std::endl;
         }
     }

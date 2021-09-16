@@ -8,8 +8,10 @@ int main(){
     int num;
     arrln = fillMatrix(num);
     if (!arrln){
-        std::cout << "incorrect data" << std::endl;
+        std::cout << "ERROR: I can't see your data in a matrix, please don't complete a process or put only numbers" << std::endl;
         return 1;
     }
-    printMat(&num);
+    std::cout << "Matrix:" << std::endl;
+    printMat(arrln, num);
+    del(arrln, num);
 }

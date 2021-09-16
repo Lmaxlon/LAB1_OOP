@@ -1,5 +1,6 @@
 #pragma once
-
+#include <chrono>
+#include <thread>
 namespace lab1{
 
     typedef struct line{
@@ -25,7 +26,7 @@ namespace lab1{
 
     /*---------------types of functions---------------*/
 
-    void printMat (matrix *mat);
+    void printMat (line *a, int m);
     line* del(line *&lines, int m);
     line* fillMatrix (int *matr);
 
@@ -41,6 +42,10 @@ namespace lab1{
                 std::cin >> prm;
                 if(!std::cin.good()){
                     std::cout << "The diagnostic program called!" << std::endl;
+                    for (int i = 0; i < 29; ++i){
+                        std::cout << "-" << std::flush ;
+                        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+                    }
                     return -1;
                 }
                 return 1;
