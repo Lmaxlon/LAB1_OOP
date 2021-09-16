@@ -1,13 +1,33 @@
-namespace std{
+#pragma once
+
+namespace lab1{
+
     typedef struct line{
         int n; //количество элементов строки
         double *arr;//массив элементов
     } line;
 
-    typedef struct matrix{
+/*    typedef struct matrix{
         int numLines; //количество строк матрицы
         line *arrln; //массив строк
-    } matrix;
+    } matrix;*/
+
+
+    /*---------------functions of compares---------------*/
+
+    inline int getmax (double a, double b){
+        return a > b;
+    }
+
+    inline int getmin (double a, double b){
+        return a < b;
+    }
+
+    /*---------------types of functions---------------*/
+
+    void printMat (matrix *mat);
+    line* del(line *&lines, int m);
+    line* fillMatrix (int *matr);
 
     /**
  * @brief Template of function "get numbers"
@@ -18,27 +38,11 @@ namespace std{
 
     template <class T>
             int getNum(T &prm){
-                cin >> prm;
-                if(!cin.good()){
-                    cout << "You put an invalid data or EOF" << endl;
+                std::cin >> prm;
+                if(!std::cin.good()){
+                    std::cout << "The diagnostic program called!" << std::endl;
                     return -1;
                 }
                 return 1;
             }
-
-            /*---------------functions of compares---------------*/
-
-            inline int getmax (double a, double b){
-                return a > b;
-            }
-
-            inline int getmin (double a, double b){
-                return a < b;
-            }
-
-            /*---------------types of functions---------------*/
-
-            void printMat (matrix *mat);
-            Line *del(Line *&lines, int m);
-            int fillMatrix (matrix *matr);
-        }
+}

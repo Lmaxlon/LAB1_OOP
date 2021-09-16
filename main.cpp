@@ -1,11 +1,15 @@
 #include <iostream>
 #include "types.h"
-
-using namespace std;
+#include "functions.cpp"
+using namespace lab1;
 
 int main(){
-    line *arr= nullptr;
+    line *arrln= nullptr;
     int num;
-    arr = fillmatrix(num);
-
+    arrln = fillMatrix(num);
+    if (!arrln){
+        std::cout << "incorrect data" << std::endl;
+        return 1;
+    }
+    printMat(&num);
 }
