@@ -77,7 +77,15 @@ namespace lab1{
             std::cout << std::endl;
         }
     }
-
+    double minormax(double a[], int m, int (*f)(double, double))
+    {
+        double res = a[0];
+        int i;
+        for (i = 0; i < m; ++i)
+            if (f(a[i], res) > 0)
+                res = a[i];
+            return res;
+    }
 
 
 }

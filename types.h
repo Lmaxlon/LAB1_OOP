@@ -29,6 +29,7 @@ namespace lab1{
     void printMat (line *a, int m);
     line* del(line *&lines, int m);
     line* fillMatrix (int *matr);
+    double minormax(double a[], int m, int (*f)(double, double));
 
     /**
  * @brief Template of function "get numbers"
