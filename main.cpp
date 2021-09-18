@@ -11,7 +11,15 @@ int main(){
         std::cout << "ERROR: I can't see your data in a matrix, please don't complete a process or put only numbers" << std::endl;
         return 1;
     }
-    std::cout << "Matrix:" << std::endl;
+    line *arrln2= nullptr;
+    arrln2 = new line[num];
+    modify(arrln2, num);
+
+    std::cout << "Sourced matrix:" << std::endl;
     printMat(arrln, num);
+    std::cout << "New matrix:" << std::endl;
+    printMat(arrln2, num);
+
     del(arrln, num);
+    del(arrln2, num);
 }
