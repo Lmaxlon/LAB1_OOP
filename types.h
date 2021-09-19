@@ -13,17 +13,6 @@ namespace lab1{
         line *arrln; //массив строк
     } matrix;*/
 
-
-    /*---------------functions of compares---------------*/
-
-    inline int getmax (double a, double b){
-        return a > b;
-    }
-
-    inline int getmin (double a, double b){
-        return a < b;
-    }
-
     /*---------------types of functions---------------*/
 
     void printMat (line *a, int m);
