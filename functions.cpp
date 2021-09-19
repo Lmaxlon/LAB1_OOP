@@ -3,16 +3,13 @@
 
 namespace lab1{
     line* fillMatrix (int &matr) {
-        line *lines = nullptr; // Ȕș
-        //      int statusline = -2;
-        std::cout << "\nPlease get numbers of lines \n" << std::endl;
+        line *lines = nullptr;
+        std::cout << "\nPlease put numbers of lines \n" << std::endl;
         int num = 0; //strings of matrix
-        //        statusline = getNum (&num); // попросили количество строк
-        if (/*statusline <= 0  && */getNum(num) < 0 ) {              //!!!!
+        if (getNum(num) < 0 ) {              //!!!!
             std::cout << "\nYou put an EOF or a WRONG DATA in the program, exit... \n" << std::endl;
             return nullptr;
         } while (num < 0);
-        //ниже выделяем память под строку
         try{
             lines = new line[num];
         }
@@ -24,9 +21,7 @@ namespace lab1{
 
         for (int i = 0 ; i < num; ++i ){
             do{
-                //              int statusrow = -2;
                 std::cout << "Enter number of items in line #" << (i + 1) << " --> ";
-                //              int row = 0;
                 if (getNum(lines[i].n) < 0) {
                     std::cout << "\nYou put an EOF or a WRONG DATA in the program, exit... \n" << std::endl;
                     del(lines,i);
@@ -45,16 +40,12 @@ namespace lab1{
 
             for (int j = 0; j < lines[i].n; ++j){
                 std::cout << "Enter items for matrix line #" << (j + 1) << ":" << std::endl;
-                //              double elem = 0;
-                //              int statuselem = -2;
-                //              statuselem = getNum(&elem);
                 if (getNum(lines[i].arr[j]) < 0){
                     std::cout << "\nYou put an EOF or a WRONG DATA in the program, exit... \n" << std::endl;
                     del (lines, i+1);
                     return nullptr;
                 }
-                //                matr->arrln[i].arr[j] = elem;
-                //                printf ("The matrix is valid");
+                lines[i].arr[j] = num; //!!!
             }
         }
         matr = num;
@@ -79,7 +70,6 @@ namespace lab1{
     }
 
     line* modify (line *&lines, int num){
-//      lines = new line[num];
         int j, i, max, min;
         for (j = 0; j < num; ++j)
         {
@@ -98,4 +88,3 @@ namespace lab1{
         return lines;
     }
 }
-//
