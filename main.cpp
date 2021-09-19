@@ -19,7 +19,7 @@ int main(){
     printMat(arrln, num);
     std::cout << "New matrix:" << std::endl;
     printMat(arrln2, num);
-
     del(arrln, num);
-    del(arrln2, num);
+    delete[] arrln2;
+    arrln2 = nullptr;
 }
