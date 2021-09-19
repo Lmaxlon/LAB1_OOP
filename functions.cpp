@@ -79,7 +79,7 @@ namespace lab1{
     }
 
     line* modify (line *&lines, int num){
-        lines = new line[num];
+//      lines = new line[num];
         int j, i, max, min;
         for (j = 0; j < num; ++j)
         {
