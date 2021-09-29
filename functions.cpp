@@ -77,10 +77,41 @@ namespace lab1{
             }
         }
             for (j = 0; j < num; ++j){
+
                 for(i = max+1; i < lines[j].n; ++i){
-                    lines[j].arr[i] = 0.0;
+//                      printf(" ");
+                      lines[j].arr[i] = 0.0;
                 }
             }
         return lines;
+    }
+
+    line* memory(line *&lines, int num){
+        //----новое выделение памяти для копирования в новый массив без чисел после максимума----//
+        line *newlines = nullptr;
+        int newnum = 0;
+        newnum = num;
+        try{
+            newlines = new line[newnum];
+        }
+        catch (std::bad_alloc &ba)
+        {
+            return nullptr;
+        }
+
+        for (j = 0; j < num; ++j){
+            try{
+                newlines[j].arr = new double [lines[j].n];
+            }
+            catch(std::bad_alloc &ba){
+                del(newlines, j);
+                return nullptr;
+            }
+            for (int i = 0; j < lines[j].n; ++i){
+                //                      printf(" ");
+                lines[j].arr[i] = 0.0;
+            }
+        }
+        //^---новое выделение памяти для копирования в новый массив без чисел после максимума---^//
     }
 }
