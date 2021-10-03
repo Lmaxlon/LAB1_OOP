@@ -1,5 +1,9 @@
 #include <iostream>
+#include <memory.h>
 #include "types.h"
+#include <vector>
+#include <algorithm>
+
 
 namespace lab1{
     line* fillMatrix (int &matr) {
@@ -62,8 +66,9 @@ namespace lab1{
 
     void printMat (line *a, int m) {
         for (int i = 0; i < m; ++i){
-            for (int j = 0; j < a[i].n; ++j)
+            for (int j = 0; j < a[i].n; ++j){
                 std::cout << a[i].arr[j] << " ";
+            }
             std::cout << std::endl;
         }
     }
@@ -73,45 +78,30 @@ namespace lab1{
         for (j = 0; j < num; ++j){
             max = 0;
             for (i = 0; i < lines[j].n; ++i){
-                if(lines[j].arr[i] > lines[j].arr[max]) max = i;
+                if(lines[j].arr[i] > lines[j].arr[max]) max = i;      //сохраняем максимум
             }
         }
-            for (j = 0; j < num; ++j){
-
-                for(i = max+1; i < lines[j].n; ++i){
-//                      printf(" ");
-                      lines[j].arr[i] = 0.0;
-                }
-            }
-        return lines;
-    }
-
-    line* memory(line *&lines, int num){
-        //----новое выделение памяти для копирования в новый массив без чисел после максимума----//
-        line *newlines = nullptr;
-        int newnum = 0;
-        newnum = num;
-        try{
-            newlines = new line[newnum];
-        }
-        catch (std::bad_alloc &ba)
-        {
-            return nullptr;
-        }
-
+        int del_numbers = 0;
         for (j = 0; j < num; ++j){
-            try{
-                newlines[j].arr = new double [lines[j].n];
-            }
-            catch(std::bad_alloc &ba){
-                del(newlines, j);
-                return nullptr;
-            }
-            for (int i = 0; j < lines[j].n; ++i){
-                //                      printf(" ");
-                lines[j].arr[i] = 0.0;
+            for(i = max+1; i < lines[j].n; ++i){
+                lines[j].arr[i] = 0.0;          //обнуляем числа после максимума
+                del_numbers++;
             }
         }
-        //^---новое выделение памяти для копирования в новый массив без чисел после максимума---^//
+        int zero_numbers = 0;
+       for (j = 0; j < num; ++j){
+           for (i = max+1; i < lines[j].n; ++i){
+               if(lines[j].arr[lines->n-1] == 0){
+                   lines[j].n--; //удаляем последний ноль если он остался после чистки
+               if(lines[j].arr[i] == 0.0){
+                   zero_numbers = zero_numbers +1;  //счетчик нулей (перед и после максимума
+                   lines[j].n--;  //удаляем нулевые элементы после максимального
+                   }
+               }
+           }
+       }
+       std::cout << "Removed items including zero after the maximum------->"<< zero_numbers << std::endl;
+       std::cout << "Total number of items removed------->" << del_numbers << std::endl;
+        return lines;
     }
 }

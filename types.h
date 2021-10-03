@@ -19,6 +19,7 @@ namespace lab1{
     line* del(line *&lines, int m);
     line* fillMatrix (int &matr);
     line* modify (line *&lines, int num);
+    line* zeromemory (line *&lines, int num);
 
     /**
  * @brief Template of function "get numbers"
@@ -28,7 +29,7 @@ namespace lab1{
  */
 
     template <class T>
-            int getNum(T &prm){
+              int getNum(T &prm){
                 std::cin >> prm;
                 if(!std::cin.good()){
                     std::cout << "The diagnostic program called!" << std::endl;
@@ -40,4 +41,36 @@ namespace lab1{
                 }
                 return 1;
             }
+
+ /*           template <class T>
+            double memory(T &lines, T &num){
+                //----новое выделение памяти для копирования в новый массив без чисел после максимума----//
+                line *newlines = nullptr;
+                int newnum = 0;
+                newnum = num;
+                try{
+                    newlines = new line[newnum];
+                }
+                catch (std::bad_alloc &ba)
+                {
+                    return lines;
+                }
+
+                for (int j = 0; j < num; ++j){
+                    try{
+                        newlines[j].arr = new double [newlines[j].n];
+                    }
+                    catch(std::bad_alloc &ba){
+                        del(newlines, j);
+                        return lines;
+                    }
+                    for (int i = 0; j < newlines[j].n; ++i){
+                        newlines[j].arr[i] = lines[j].arr[i];
+                        double a = newlines[j].arr[i];
+                        return a;
+                    }
+                }
+                //^---новое выделение памяти для копирования в новый массив без чисел после максимума---^//
+               return newlines;
+            }*/
 }
