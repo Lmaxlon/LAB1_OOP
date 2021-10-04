@@ -8,6 +8,11 @@ namespace lab1{
         double *arr;//массив элементов
     } line;
 
+    typedef struct nulles{
+        int count;
+        double *value;
+    } nulles;
+
 /*    typedef struct matrix{
         int numLines; //количество строк матрицы
         line *arrln; //массив строк
@@ -19,7 +24,8 @@ namespace lab1{
     line* del(line *&lines, int m);
     line* fillMatrix (int &matr);
     line* modify (line *&lines, int num);
-    line* zeromemory (line *&lines, int num);
+    nulles* memaverage (int num, line *&lines);
+    nulles *delaverage(nulles *&null, int m);
 
     /**
  * @brief Template of function "get numbers"
@@ -38,39 +44,9 @@ namespace lab1{
                         std::this_thread::sleep_for(std::chrono::milliseconds(50));
                     }
                     return -1;
+                } else if (prm == 0.0){
+                    return 2;
                 }
                 return 1;
             }
-
- /*           template <class T>
-            double memory(T &lines, T &num){
-                //----новое выделение памяти для копирования в новый массив без чисел после максимума----//
-                line *newlines = nullptr;
-                int newnum = 0;
-                newnum = num;
-                try{
-                    newlines = new line[newnum];
-                }
-                catch (std::bad_alloc &ba)
-                {
-                    return lines;
-                }
-
-                for (int j = 0; j < num; ++j){
-                    try{
-                        newlines[j].arr = new double [newlines[j].n];
-                    }
-                    catch(std::bad_alloc &ba){
-                        del(newlines, j);
-                        return lines;
-                    }
-                    for (int i = 0; j < newlines[j].n; ++i){
-                        newlines[j].arr[i] = lines[j].arr[i];
-                        double a = newlines[j].arr[i];
-                        return a;
-                    }
-                }
-                //^---новое выделение памяти для копирования в новый массив без чисел после максимума---^//
-               return newlines;
-            }*/
 }

@@ -10,6 +10,7 @@ namespace lab1{
         line *lines = nullptr;
         std::cout << "\nPlease get numbers of lines \n" << std::endl;
         int num = 0; //strings of matrix
+        int ptr = 0;
         if (getNum(num) < 0 ) {              //!!!!
             std::cout << "\nYou put an EOF or a WRONG DATA in the program, exit... \n" << std::endl;
             return nullptr;
@@ -48,6 +49,11 @@ namespace lab1{
                     std::cout << "\nYou put an EOF or a WRONG DATA in the program, exit... \n" << std::endl;
                     del (lines, i+1);
                     return nullptr;
+                }else{
+                    nulles *null= nullptr;
+                    null = memaverage(num, lines);
+                    std::cout << null << std::endl;
+                    delaverage(null, num);
                 }
             }
         }
@@ -61,6 +67,14 @@ namespace lab1{
         for (i = 0; i < m; i++)
             delete[] lines[i].arr;
         delete[] lines;
+        return nullptr;
+    }
+
+    nulles *delaverage(nulles *&null, int m){
+        int i;
+        for (i = 0; i < m; i++)
+            delete[] null[i].value;
+        delete[] null;
         return nullptr;
     }
 
@@ -91,7 +105,7 @@ namespace lab1{
         int zero_numbers = 0;
        for (j = 0; j < num; ++j){
            for (i = max+1; i < lines[j].n; ++i){
-               if(lines[j].arr[lines->n-1] == 0){
+               if(lines[j].arr[lines->n-1] == 0){    //здесь под вопросом присутствие нуля!
                    lines[j].n--; //удаляем последний ноль если он остался после чистки
                if(lines[j].arr[i] == 0.0){
                    zero_numbers = zero_numbers +1;  //счетчик нулей (перед и после максимума
@@ -103,5 +117,25 @@ namespace lab1{
        std::cout << "Removed items including zero after the maximum------->"<< zero_numbers << std::endl;
        std::cout << "Total number of items removed------->" << del_numbers << std::endl;
         return lines;
+    }
+//если элемент равен ноль
+//заносим в новый массив
+//иначе
+//сохраняем индекс в обычный доп массив
+    nulles* memaverage (int num, line *&lines) {
+        nulles *null = nullptr;
+        null = new nulles[num];
+        for (int i = 0 ; i < num; ++i ){
+            null[i].value = new double [null[i].count];
+            for (int j = 0; j < null[i].count; ++j){
+                if(lines[i].arr[j] == 0.0){
+                    double index = j;
+                } else if(lines[i].arr[j] != 0.0){
+                    null->value = lines->arr;
+                    null->count = lines->n;
+                }
+            }
+        }
+        return null;
     }
 }

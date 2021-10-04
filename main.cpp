@@ -5,6 +5,7 @@ using namespace lab1;
 
 int main(){
     line *arrln= nullptr;
+
     int num;
     arrln = fillMatrix(num);
     if (!arrln){
